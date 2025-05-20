@@ -22,7 +22,7 @@ const UserDashboard = () => {
         const fetchProgress=async()=>{
             const token=localStorage.getItem('token')
             try{
-                const res=await axios.get('http://localhost:5000/progress',{
+                const res=await axios.get('https://skillcheckr.onrender.com/progress',{
                     headers:{
                         Authorization:`Bearer ${token}`,
                     }
@@ -39,7 +39,7 @@ const UserDashboard = () => {
      const handleDeleteAll = async () => {
         const token = localStorage.getItem('token')
         try {
-            await axios.delete('http://localhost:5000/progress', {
+            await axios.delete('https://skillcheckr.onrender.com/progress', {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

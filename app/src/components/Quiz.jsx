@@ -29,7 +29,7 @@ const Quiz = () => {
  
   useEffect(() => {
    const fetchQuestions = async () => {
-    const res = await axios.get(`http://localhost:5000/questions/${category}`);
+    const res = await axios.get(`https://skillcheckr.onrender.com/questions/${category}`);
     const shuffled = shuffleArray(res.data);
     setQuestions(shuffled);
   };
@@ -76,7 +76,7 @@ const Quiz = () => {
 
   const saveProgress=async (correctAnswers,wrongAnswers)=>{
     const token=localStorage.getItem('token');
-    await axios.post('http://localhost:5000/save-progress',{
+    await axios.post('https://skillcheckr.onrender.com/save-progress',{
       category,
       correctAnswers,
       wrongAnswers
@@ -90,7 +90,7 @@ const Quiz = () => {
    const handleShowMyScore = async () => {
   const token = localStorage.getItem('token');
   try {
-    const res = await axios.get('http://localhost:5000/progress', {
+    const res = await axios.get('https://skillcheckr.onrender.com/progress', {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (res.data && res.data.length > 0) {

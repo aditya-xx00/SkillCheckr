@@ -16,7 +16,7 @@ const Register = () => {
     return;
     }
     try{
-       await axios.post('http://localhost:5000/register',{username,password})
+       await axios.post('https://skillcheckr.onrender.com/register',{username,password})
         toast.success('Registered successfully!');
        setUsername('')
        setPassword('')
