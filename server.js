@@ -3,19 +3,28 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import path from "path"
+import 'dotenv/config' 
 
-const secret='30dba1035f061ea33236c99d7285914b2a8afc281fd6e776b8c2696b5c9ff95e3fa0dd4448b9c8d5ded1a08b9a5a375a2c4155a952275f694c5262de00bf2d2d'
+
+const secret = process.env.JWT_SECRET;
 
 const app= express();
-const port= 5000;
+
+const port = process.env.PORT || 5000;
 
 const _dirname=path.resolve();
 
 app.use(cors());
 app.use(express.json()); 
 
-mongoose.connect('mongodb+srv://aditya_xx00:Aditya%4055555@project1-db.mem9zo4.mongodb.net/?retryWrites=true&w=majority&appName=project1-db'
-)
+
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+.then(() => console.log('MongoDB connected'))
+ .catch(err => console.error('MongoDB connection error:', err));
 
  const questionSchema = new mongoose.Schema({
     question: String,
